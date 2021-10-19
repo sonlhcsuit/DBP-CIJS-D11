@@ -65,6 +65,8 @@ Tạo một ứng dụng giúp chọn 1 mã màu random để thoả mãn tính 
 - [CSS DOM](https://www.w3schools.com/js/js_htmldom_css.asp)
 - [click event](https://www.w3schools.com/js/js_htmldom_eventlistener.asp)
 
+## Example:
+- https://prank-sonlh.netlify.app/colorful/
 
 
 
