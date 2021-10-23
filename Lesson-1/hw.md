@@ -57,8 +57,8 @@ padovan(-50, 1) ➞ [-524, 245, 71, -279, 316, -208, 37, 108, -171, 145, -63, -2
 Tạo một ứng dụng giúp chọn 1 mã màu random để thoả mãn tính tò mò của người dùng
 
 ## Requirements
-[] Ứng dụng có các ô (box) cho phép người dùng nhấn chuột vào
-[] Khi người dùng click vào các màu trong ô sẽ thay đổi ngẫu nhiên
+- [ ] Ứng dụng có các ô (box) cho phép người dùng nhấn chuột vào
+- [ ] Khi người dùng click vào các màu trong ô sẽ thay đổi ngẫu nhiên
 
 ## Kiến thức tham khảo
 - [rgb](https://www.w3schools.com/colors/colors_rgb.asp)
