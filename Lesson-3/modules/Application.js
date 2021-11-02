@@ -7,6 +7,7 @@ class Application {
     div = null
     trueColor = null
     falseColor = null
+    
     constructor() {
         const main = document.createElement("div")
         main.id = "main"
@@ -14,6 +15,7 @@ class Application {
         main.addEventListener("selectColor", this.handlerSelect)
         main.addEventListener("gameLose", this.handlerLose)
         main.addEventListener("gameWin", this.handlerWin)
+
         
         this.main.insertAdjacentElement("beforeend", this.timer.html())
         this.main.insertAdjacentElement("beforeend", this.boxes.html())
