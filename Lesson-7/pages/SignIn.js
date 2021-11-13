@@ -1,4 +1,7 @@
+import { signInWithEmail } from "../modules/auth.service.js"
 import { SignInSuccessEvent, ToSignUpEvent } from "../modules/event.js"
+import { ValidationException } from "../modules/exception.js"
+import { getUserInformation } from "../modules/user.service.js"
 class SignIn {
 	constructor() {
 		this.initializeUI()
@@ -56,13 +59,31 @@ class SignIn {
 		// main.innerHTML = "Text from Sign In Form"
 		main.classList.add("sign-in-form")
 		this.main = main
+		this.signIn = button
+		this.email = email
+		this.password = password
 		this.gbtn = gbtn
 		this.toSignUp = toSignUp
 	}
+	signInOperation() {
+		if (!this.email.value) throw ValidationException("Email is invalid")
+		if (!this.password.value) throw ValidationException("Password is invalid")
+		signInWithEmail(this.email.value, this.password.value)
+			.then(user => {
+				const uid = user.uid
+				return getUserInformation(uid)
+			}).then(user => {
+				this.main.dispatchEvent(new SignInSuccessEvent(user))
+			})
+	}
+	
 	setup() {
 		this.toSignUp.addEventListener("click", () => {
 			console.log("click change")
 			this.main.dispatchEvent(new ToSignUpEvent())
+		})
+		this.signIn.addEventListener("click", () => {
+			this.signInOperation()
 		})
 
 		this.gbtn.addEventListener("click", () => {

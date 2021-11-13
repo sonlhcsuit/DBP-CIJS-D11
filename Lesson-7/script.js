@@ -1,6 +1,6 @@
 import { } from "./modules/setup.js" // nhận side effect
 import { SignUp, SignIn, Home } from "./pages/index.js"
-import {SignInSuccessEvent,ToSignUpEvent,ToSignInEvent}  from "./modules/event.js"
+import { SignInSuccessEvent, ToSignUpEvent, ToSignInEvent } from "./modules/event.js"
 
 class Application {
 	home
@@ -14,42 +14,42 @@ class Application {
 		this.home = new Home()
 		this.setup()
 	}
-	setup(){
-		this.main.addEventListener(ToSignInEvent.EVENT_NAME,()=>{
+	setup() {
+		this.main.addEventListener(ToSignInEvent.EVENT_NAME, () => {
 			console.log("Render Sign In page")
-			this.renderSignIn()			
+			this.renderSignIn()
 		})
-		this.main.addEventListener(ToSignUpEvent.EVENT_NAME,()=>{
+		this.main.addEventListener(ToSignUpEvent.EVENT_NAME, () => {
 			console.log("Render Sign Up Page ")
 			this.renderSignUp()
 		})
 
 
 
-		this.main.addEventListener(SignInSuccessEvent.EVENT_NAME,  (e)=> {
-			// const { displayName, email, photoURL } = e.detail
-			// console.log(this)
-			// this.home.setUser({
-			// 	name: displayName,
-			// 	email: email,
-			// 	avatar: photoURL
-			// })
-			// this.renderHome()
+		this.main.addEventListener(SignInSuccessEvent.EVENT_NAME, (e) => {
+			const { avatar, name } = e.detail
+			console.log(this)
+			this.home.setUser({
+				name: name,
+				email: "",
+				avatar: avatar
+			})
+			this.renderHome()
 		})
 	}
-	renderSignUp(){
+	renderSignUp() {
 		this.main.innerHTML = ""
-		this.main.insertAdjacentElement("afterbegin",this.signUp.html())
+		this.main.insertAdjacentElement("afterbegin", this.signUp.html())
 	}
 	renderSignIn() {
 		this.main.innerHTML = ""
 		this.main.insertAdjacentElement("afterbegin", this.signIn.html())
-		
+
 	}
 
-	renderHome(){
+	renderHome() {
 		this.main.innerHTML = ""
-		this.main.insertAdjacentElement("afterbegin", this.home.html())		
+		this.main.insertAdjacentElement("afterbegin", this.home.html())
 	}
 
 	run() {

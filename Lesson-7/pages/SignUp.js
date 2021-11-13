@@ -1,4 +1,8 @@
 import { ToSignInEvent } from "../modules/event.js"
+import { ValidationException } from "../modules/exception.js"
+import { signUpWithEmail } from "../modules/auth.service.js"
+import { updateUserInformation } from "../modules/user.service.js"
+const DEFAULT_AVATAR = "https://aux.iconspalace.com/uploads/cat-grumpy-icon-256.png"
 class SignUp {
 
 	constructor() {
@@ -30,7 +34,7 @@ class SignUp {
 		const toSignIn = document.createElement("input")
 
 		name.setAttribute("type", "text")
-		name.setAttribute("placerholder", "Enter your fullname")
+		name.setAttribute("placeholder", "Enter your fullname")
 		name.classList.add("sign-up-form-component")
 		nameLabel.innerHTML = "Enter your fullname"
 		nameLabel.classList.add("sign-up-form-label")
@@ -44,7 +48,7 @@ class SignUp {
 		dob.setAttribute("type", "date")
 		dob.classList.add("sign-up-form-component")
 		dobLabel.innerHTML = "Select your birthday"
-		dobLabel.classList.add("sign-up-form-lable")
+		dobLabel.classList.add("sign-up-form-label")
 
 		password.setAttribute("type", "password")
 		password.setAttribute("placeholder", "Enter password")
@@ -80,7 +84,15 @@ class SignUp {
 		main.appendChild(toSignIn)
 
 		main.classList.add("sign-up-form")
+
+
 		this.main = main
+		this.name = name
+		this.email = email
+		this.password = password
+		this.confirmPassword = confirmPassword
+		this.dob = dob
+		this.signUp = button
 		this.toSignIn = toSignIn
 
 	}
@@ -88,9 +100,43 @@ class SignUp {
 		this.toSignIn.addEventListener("click", () => {
 			this.main.dispatchEvent(new ToSignInEvent())
 		})
+		this.signUp.addEventListener("click", () => {
+			try {
+				this.signUpOperation()
+			} catch (error) {
+				if (error instanceof ValidationException) {
+					alert(error.message)
+				} else {
+					throw error
+
+				}
+			}
+		})
+	}
+	signUpOperation() {
+		// validate cái form	
+		if (!this.name.value) throw new ValidationException("Name is not valid.")
+		if (!this.email.value) throw new ValidationException("Email is not valid.")
+		if (!this.dob.value) throw new ValidationException("Day of birth is not valid.")
+		if (!this.password && (this.password.value != this.confirmPassword.value)) throw new ValidationException("Passwords do not match!")
+		signUpWithEmail(this.email.value, this.password.value)
+			.then(user => {
+				const uid = user.uid
+				updateUserInformation(uid,
+					{
+						name: this.name.value,
+						dob: new Date(this.dob.value),
+						avatar: DEFAULT_AVATAR
+					}
+				).then(data=>{
+					console.log(data)
+				})
+				// console.log(this.name.value, this.email.value, this.dob.value, this.password.value)
+				// console.log(user)
+			})
+		//
 
 	}
-
 	html() {
 		return this.main
 	}
