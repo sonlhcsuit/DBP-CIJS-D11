@@ -1,0 +1,84 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.gbtn {
+	font-size: 20px;
+	background-color: aqua;
+}
+
+.border {
+	border: 1px solid black;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.sign-up-form {
+	height: 50vh;
+	width: 25vw;
+	display: flex;
+	flex-direction: column;
+}
+
+.sign-up-form>.sign-up-form-label {
+	font-size: 20px;
+	font-style: italic;
+	margin: 5px 0;
+}
+
+.sign-up-form>.sign-up-form-component {
+	font-size: 20px;
+	padding: 5px 5px;
+}
+
+.sign-up-form>input.sign-up-form-component[type=button] {
+	background-color: #33ffff;
+	color: black;
+	border: none;
+	margin: 10px 0;
+}
+
+.sign-up-form>input.sign-up-form-component[type=button]:active {
+	background-color: #5cecec;
+	color: white;
+}
+
+
+
+.sign-in-form {
+	height: 50vh;
+	width: 25vw;
+	display: flex;
+	flex-direction: column;
+}
+
+.sign-in-form>.sign-in-form-label {
+	font-size: 20px;
+	font-style: italic;
+	margin: 5px 0;
+}
+
+.sign-in-form>.sign-in-form-component {
+	font-size: 20px;
+	padding: 5px 5px;
+}
+
+.sign-in-form>input.sign-in-form-component[type=button] {
+	background-color: #33ffff;
+	color: black;
+	border: none;
+	margin: 10px 0;
+}
+
+.sign-in-form>input.sign-in-form-component[type=button]:active {
+	background-color: #5cecec;
+	color: white;
+}
