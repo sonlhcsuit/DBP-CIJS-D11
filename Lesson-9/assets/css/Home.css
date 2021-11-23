@@ -1,0 +1,103 @@
+.home {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+}
+
+.home>.home-sider {
+	width: 20vw;
+	height: 100%;
+	overflow: auto;
+}
+
+.home>.home-content {
+	width: 80vw;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	overflow: auto;
+}
+
+.home-sider>.home-sider-conversation {
+	width: 100%;
+	height: 100px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.home-sider-conversation>img {
+	margin: 0 10px;
+	height: 80%;
+	border-radius: 50%;
+}
+
+.home-sider-conversation>div {
+	height: 100%;
+	flex-grow: 1;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	padding-left: 10px;
+}
+
+.home-sider-conversation>div>p {
+	color: gray;
+	margin-top: 5px;
+	font-style: italic;
+	font-size: 10;
+}
+
+.home-sider-conversation:hover {
+	border-radius: 20px;
+	background-color: rgba(236, 240, 241, 1);
+	/* background-color: gray; */
+}
+/* Home sider information */
+.home-sider-information>img {
+	margin: 0 10px;
+	height: 100%;
+	border-radius: 50%;
+}
+.home-sider-information>h3{
+	height: fit-content;
+	margin: 0 10px;
+}
+.home-sider>.home-sider-information {
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	padding-left: 10px;
+}
+
+.home-content>.message {
+	width: auto;
+	display: block;
+}
+
+.message>p {
+	margin: 10px 10px;
+	border-radius: 10px;
+	padding: 10px 20px;
+}
+
+.message.incomming>p {
+	display: block;
+	margin-right: auto;
+	width: fit-content;
+	max-width: 50%;
+	color:black;
+	background-color: rgb(228, 230, 234);
+}
+
+.message.outcomming>p {
+	width: fit-content;
+	display: block;
+	margin-left: auto;
+	max-width: 50%;
+	text-align: right;
+	color: white;
+	background-color: rgb(55, 133, 247);
+}
